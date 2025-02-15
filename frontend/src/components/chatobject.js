@@ -2,7 +2,7 @@ import axios from "axios";
 
 const Chatbox = (props) => {
   const deletechat = async () => {
-    const url = `http://127.0.0.1:8000/conversations/${props.id}`;
+    const url = `https://hubgpt-b2ad.onrender.com/conversations/${props.id}`;
     const authToken = localStorage.getItem("DPAHub");
     const res = await axios.delete(url, {
       headers: {

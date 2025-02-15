@@ -48,7 +48,7 @@ const MessageField = ({
 
       var textval = "hello";
       const textRes = await axios
-        .post("http://127.0.0.1:8000/convert-audio-to-text/", form, {
+        .post("https://hubgpt-b2ad.onrender.com/convert-audio-to-text/", form, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -63,7 +63,7 @@ const MessageField = ({
         try {
           // GET OPENAI RESPONSE
           const response = await axios.get(
-            `http://127.0.0.1:8000/${message}`
+            `https://hubgpt-b2ad.onrender.com/${message}`
           );
 
           // TEXT RESPONSE
@@ -74,7 +74,7 @@ const MessageField = ({
           var audioOutput;
           const audioResponse = await axios
             .post(
-              "http://127.0.0.1:8000/convert-text-to-audio",
+              "https://hubgpt-b2ad.onrender.com/convert-text-to-audio",
               { text: botMessage },
               {
                 headers: { "Content-Type": "audio/mpeg" },
@@ -143,7 +143,7 @@ const MessageField = ({
       try {
         // GET OPENAI RESPONSE
         const response = await axios.get(
-          `http://127.0.0.1:8000/${message}`
+          `https://hubgpt-b2ad.onrender.com/${message}`
         );
         // console.log(response);
         // TEXT RESPONSE
@@ -153,7 +153,7 @@ const MessageField = ({
         var audioOutput;
         const audioResponse = await axios
           .post(
-            "http://127.0.0.1:8000/convert-text-to-audio",
+            "https://hubgpt-b2ad.onrender.com/convert-text-to-audio",
             { text: botMessage },
             {
               headers: { "Content-Type": "audio/mpeg" },
@@ -209,7 +209,7 @@ const MessageField = ({
         const authToken = localStorage.getItem("DPAHub");
         // console.log(dbmessages,authToken);
         const response = await axios.post(
-          "http://127.0.0.1:8000/add_chats",
+          "https://hubgpt-b2ad.onrender.com/add_chats",
           dbmessages,
           {
             headers: {
@@ -225,7 +225,7 @@ const MessageField = ({
         const authToken = localStorage.getItem("DPAHub");
         //console.log(dbmessages,authToken);
 
-        const url = `http://127.0.0.1:8000/update_chats/${chatid}`;
+        const url = `https://hubgpt-b2ad.onrender.com/update_chats/${chatid}`;
         const response = await axios
           .put(url, dbmessages, {
             headers: {
@@ -269,7 +269,7 @@ const MessageField = ({
     if (chatid !== null) {
       const authToken = localStorage.getItem("DPAHub");
       const res = await axios
-        .get(`http://127.0.0.1:8000/conversations/${chatid}`, {
+        .get(`https://hubgpt-b2ad.onrender.com/conversations/${chatid}`, {
           headers: {
             Authorization: `Bearer ${authToken}`,
             "Content-Type": "application/json", // Set the content type to JSON

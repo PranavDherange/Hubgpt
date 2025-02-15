@@ -13,7 +13,7 @@ const Signup = (props) => {
   const signup = (e) => {
     e.preventDefault();
     axios
-      .post("http://127.0.0.1:8000/signup", {
+      .post("https://hubgpt-b2ad.onrender.com/signup", {
         username: username,
         mobile: mobile,
         email: email,

@@ -19,7 +19,7 @@ const ChatPage = () => {
   const fetchOldChats = async () => {
     const authToken = localStorage.getItem("DPAHub");
     const res = await axios
-      .get("http://127.0.0.1:8000/sidebar/", {
+      .get("https://hubgpt-b2ad.onrender.com/sidebar/", {
         headers: {
           Authorization: `Bearer ${authToken}`,
           "Content-Type": "application/json", // Set the content type to JSON
