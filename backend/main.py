@@ -15,12 +15,15 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session, relationship
 import openai
 import requests
-from decouple import config
+from dotenv import load_dotenv  # <-- Added dotenv
+import os  # <-- Added os
 
-openai.org=config("openai_org")
-openai.api_key=config("openai_api_key")
+# Load environment variables
+load_dotenv()  # <-- Load environment variables from .env file
 
-jwt_secret_key = config("jwt_secret_key")
+openai.api_key = os.getenv("openai_api_key")  # <-- Replaced config() with os.getenv()
+
+jwt_secret_key = os.getenv("jwt_secret_key")  
 
 SECERT_KEY = jwt_secret_key
 ALGORITHM ="HS256"
@@ -327,7 +330,7 @@ async def converttexttoaudio(response: Request):
             "use_speaker_boost": True
         }
         }
-        headers={"xi-api-key":config("eleven_lab"),
+        headers={"xi-api-key":os.getenv("eleven_lab"),
         'accept': 'audio/mpeg',
         'Content-Type': "application/json"}
         response=requests.post(endpoint,json=body,headers=headers)
